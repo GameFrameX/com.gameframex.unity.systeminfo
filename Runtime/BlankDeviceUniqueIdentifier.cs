@@ -37,11 +37,15 @@ using System.Runtime.InteropServices;
 namespace BlankSystemInfo.Runtime
 {
     /// <summary>
-    /// 获取 Android 和 iOS 的设备唯一标识符（纯 C# 实现，无需 Java/JAR）
+    /// 获取 Android 和 iOS 的设备唯一标识符（纯 C# 实现，无需 Java/JAR）。
     /// </summary>
+    /// <remarks>
+    /// Get device unique identifiers for Android and iOS (pure C# implementation, no Java/JAR needed).
+    /// </remarks>
     public sealed class BlankDeviceUniqueIdentifier
     {
 #if UNITY_IOS || UNITY_IPHONE
+        // iOS 原生函数导入（通过 __Internal 链接） / iOS native function imports (linked via __Internal)
         [DllImport("__Internal")]
         private static extern string gameframex_device_get_imei();
         [DllImport("__Internal")]
@@ -51,8 +55,12 @@ namespace BlankSystemInfo.Runtime
 #endif
 
         /// <summary>
-        /// 获取设备 OAID（Android 独有，iOS/Editor 降级为 SystemInfo.deviceUniqueIdentifier）
+        /// 获取设备 OAID（Android 独有，iOS/Editor 降级为 SystemInfo.deviceUniqueIdentifier）。
         /// </summary>
+        /// <remarks>
+        /// Get device OAID (Android only; iOS/Editor falls back to SystemInfo.deviceUniqueIdentifier).
+        /// </remarks>
+        /// <value>设备 OAID 标识符 / Device OAID identifier</value>
         public static string DeviceGetOaid
         {
             get
@@ -75,8 +83,12 @@ namespace BlankSystemInfo.Runtime
         }
 
         /// <summary>
-        /// 获取设备 IDFA（iOS 独有，Android/Editor 降级为 SystemInfo.deviceUniqueIdentifier）
+        /// 获取设备 IDFA（iOS 独有，Android/Editor 降级为 SystemInfo.deviceUniqueIdentifier）。
         /// </summary>
+        /// <remarks>
+        /// Get device IDFA (iOS only; Android/Editor falls back to SystemInfo.deviceUniqueIdentifier).
+        /// </remarks>
+        /// <value>设备 IDFA 标识符 / Device IDFA identifier</value>
         public static string DeviceGetIdfa
         {
             get
@@ -99,8 +111,12 @@ namespace BlankSystemInfo.Runtime
         }
 
         /// <summary>
-        /// 获取设备 IMEI
+        /// 获取设备 IMEI。
         /// </summary>
+        /// <remarks>
+        /// Get device IMEI.
+        /// </remarks>
+        /// <value>设备 IMEI 标识符 / Device IMEI identifier</value>
         public static string DeviceGetImei
         {
             get
@@ -125,8 +141,12 @@ namespace BlankSystemInfo.Runtime
         }
 
         /// <summary>
-        /// 获取设备唯一标识符（多标识符 MD5 哈希）
+        /// 获取设备唯一标识符（多标识符 MD5 哈希）。
         /// </summary>
+        /// <remarks>
+        /// Get device unique identifier (composite MD5 hash of multiple identifiers).
+        /// </remarks>
+        /// <value>设备唯一标识符 / Device unique identifier</value>
         public static string DeviceUniqueIdentifier
         {
             get
@@ -150,11 +170,23 @@ namespace BlankSystemInfo.Runtime
             }
         }
 
+        /// <summary>
+        /// 检查标识符是否有效（非空、非 "null"、长度 >= 4）。
+        /// </summary>
+        /// <remarks>
+        /// Check if the identifier is valid (non-empty, not "null", length >= 4).
+        /// </remarks>
         private static bool IsValid(string id)
         {
             return !string.IsNullOrEmpty(id) && id != "null" && id.Length >= 4;
         }
 
+        /// <summary>
+        /// 标准化标识符：移除连字符、截断至 32 字符。
+        /// </summary>
+        /// <remarks>
+        /// Normalize identifier: remove dashes, truncate to 32 characters.
+        /// </remarks>
         private static string Normalize(string sid)
         {
             sid = (sid ?? "").Replace("-", "");
@@ -167,21 +199,40 @@ namespace BlankSystemInfo.Runtime
         }
 
         // =====================================================================================
-        //  Android JNI helpers — 直接通过 AndroidJavaClass/AndroidJavaObject 调用系统 API
+        //  Android JNI 辅助方法 — 通过 AndroidJavaClass/AndroidJavaObject 直接调用系统 API
+        //  Android JNI helpers — call system APIs directly via AndroidJavaClass/AndroidJavaObject
         // =====================================================================================
 #if UNITY_ANDROID
 
+        /// <summary>
+        /// 获取当前 Activity。
+        /// </summary>
+        /// <remarks>
+        /// Get current Activity.
+        /// </remarks>
         private static AndroidJavaObject GetActivity()
         {
             return new AndroidJavaClass("com.unity3d.player.UnityPlayer")
                 .GetStatic<AndroidJavaObject>("currentActivity");
         }
 
+        /// <summary>
+        /// 获取应用上下文。
+        /// </summary>
+        /// <remarks>
+        /// Get application context.
+        /// </remarks>
         private static AndroidJavaObject GetAppContext()
         {
             return GetActivity().Call<AndroidJavaObject>("getApplicationContext");
         }
 
+        /// <summary>
+        /// 获取 Android SDK 版本号。
+        /// </summary>
+        /// <remarks>
+        /// Get Android SDK version number.
+        /// </remarks>
         private static int GetSdkInt()
         {
             return new AndroidJavaClass("android.os.Build$VERSION").GetStatic<int>("SDK_INT");
@@ -189,6 +240,12 @@ namespace BlankSystemInfo.Runtime
 
         // --- IMEI ---
 
+        /// <summary>
+        /// 安全获取 IMEI（Android 8.0+ 使用 getImei，旧版使用 getDeviceId）。
+        /// </summary>
+        /// <remarks>
+        /// Safely get IMEI (uses getImei on Android 8.0+, getDeviceId on older versions).
+        /// </remarks>
         private static string SafeGetImei()
         {
             try
@@ -204,6 +261,12 @@ namespace BlankSystemInfo.Runtime
 
         // --- Android ID ---
 
+        /// <summary>
+        /// 获取 Android ID。
+        /// </summary>
+        /// <remarks>
+        /// Get Android ID.
+        /// </remarks>
         private static string SafeGetAndroidId()
         {
             try
@@ -217,6 +280,12 @@ namespace BlankSystemInfo.Runtime
 
         // --- WiFi MAC ---
 
+        /// <summary>
+        /// 获取 WiFi MAC 地址。
+        /// </summary>
+        /// <remarks>
+        /// Get WiFi MAC address.
+        /// </remarks>
         private static string SafeGetWifiMac()
         {
             try
@@ -231,6 +300,12 @@ namespace BlankSystemInfo.Runtime
 
         // --- Bluetooth MAC ---
 
+        /// <summary>
+        /// 获取蓝牙 MAC 地址。
+        /// </summary>
+        /// <remarks>
+        /// Get Bluetooth MAC address.
+        /// </remarks>
         private static string SafeGetBtMac()
         {
             try
@@ -244,6 +319,12 @@ namespace BlankSystemInfo.Runtime
 
         // --- DeviceUniqueIdentifier (composite MD5) ---
 
+        /// <summary>
+        /// 通过多个硬件标识符组合生成 MD5 哈希作为设备唯一标识。
+        /// </summary>
+        /// <remarks>
+        /// Generate an MD5 hash from multiple hardware identifiers as device unique ID.
+        /// </remarks>
         private static string ComputeDeviceUniqueId()
         {
             try
@@ -280,6 +361,12 @@ namespace BlankSystemInfo.Runtime
 
         // --- OAID ---
 
+        /// <summary>
+        /// 获取设备 OAID（依次尝试 MSA SDK、厂商专属接口、华为 HMS）。
+        /// </summary>
+        /// <remarks>
+        /// Get device OAID (tries MSA SDK, manufacturer-specific APIs, then Huawei HMS in order).
+        /// </remarks>
         private static string SafeGetOaid()
         {
             try
@@ -287,11 +374,11 @@ namespace BlankSystemInfo.Runtime
                 var context = GetAppContext();
                 if (context == null) return "";
 
-                // 1. MSA SDK
+                // 1. MSA SDK / MSA SDK
                 string oaid = TryReflectStatic("com.bun.lib.MsaIdProxy", "getOAID", context);
                 if (!string.IsNullOrEmpty(oaid)) return oaid;
 
-                // 2. Manufacturer-specific
+                // 2. 厂商专属接口 / Manufacturer-specific APIs
                 string mfr = new AndroidJavaClass("android.os.Build")
                     .GetStatic<string>("MANUFACTURER").ToLower();
 
@@ -321,7 +408,7 @@ namespace BlankSystemInfo.Runtime
                     if (!string.IsNullOrEmpty(oaid)) return oaid;
                 }
 
-                // 3. Fallback: try Huawei HMS
+                // 3. 回退：尝试华为 HMS / Fallback: try Huawei HMS
                 oaid = TryHuaweiOaid(context);
                 if (!string.IsNullOrEmpty(oaid)) return oaid;
             }
@@ -329,6 +416,12 @@ namespace BlankSystemInfo.Runtime
             return "";
         }
 
+        /// <summary>
+        /// 通过华为 HMS 广告 SDK 获取 OAID。
+        /// </summary>
+        /// <remarks>
+        /// Get OAID via Huawei HMS Ads SDK.
+        /// </remarks>
         private static string TryHuaweiOaid(AndroidJavaObject context)
         {
             try
@@ -341,6 +434,12 @@ namespace BlankSystemInfo.Runtime
             catch { return ""; }
         }
 
+        /// <summary>
+        /// 通过反射调用静态方法。
+        /// </summary>
+        /// <remarks>
+        /// Call static method via reflection.
+        /// </remarks>
         private static string TryReflectStatic(string className, string method, AndroidJavaObject arg)
         {
             try
@@ -350,6 +449,12 @@ namespace BlankSystemInfo.Runtime
             catch { return ""; }
         }
 
+        /// <summary>
+        /// 通过反射调用实例方法。
+        /// </summary>
+        /// <remarks>
+        /// Call instance method via reflection.
+        /// </remarks>
         private static string TryReflectInstance(string className, string method, AndroidJavaObject arg)
         {
             try
