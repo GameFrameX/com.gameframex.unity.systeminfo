@@ -64,9 +64,19 @@ namespace BlankSystemInfo.Runtime
                     return id;
                 }
 
+#if UNITY_IOS || UNITY_IPHONE
                 var sid = __DeviceGetIMEI();
+#elif UNITY_ANDROID
+                UnityEngine.AndroidJavaObject androidJavaObject = new UnityEngine.AndroidJavaObject("com.alianhome.deviceuniqueidentifier.MainActivity");
+                var sid = androidJavaObject.CallStatic<string>("DeviceGetIMEI");
+#else
+                var sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
+#endif
                 sid = sid.Replace("-", string.Empty);
-                sid = sid.Substring(0, 32);
+                if (sid.Length > 32)
+                {
+                    sid = sid.Substring(0, 32);
+                }
                 UnityEngine.PlayerPrefs.SetString("DeviceUniqueIdentifierIMEI", sid);
                 return sid;
             }
