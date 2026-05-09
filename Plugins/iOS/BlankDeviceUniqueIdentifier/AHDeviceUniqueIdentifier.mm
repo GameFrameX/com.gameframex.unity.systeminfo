@@ -9,6 +9,7 @@
 #import "AHDeviceUniqueIdentifier.h"
 #import "SSKeychain.h"
 #import <AdSupport/AdSupport.h>
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 @implementation AHDeviceUniqueIdentifier
 
