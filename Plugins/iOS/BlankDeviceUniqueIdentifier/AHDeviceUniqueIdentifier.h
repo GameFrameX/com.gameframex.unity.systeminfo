@@ -15,6 +15,7 @@ extern "C" {
 #endif
     char * DeviceUniqueId();
     char * __DeviceGetIMEI();
+    char * __DeviceGetIDFA();
 #ifdef __cplusplus
 }
 #endif

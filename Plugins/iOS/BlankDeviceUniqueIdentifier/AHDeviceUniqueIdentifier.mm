@@ -8,6 +8,7 @@
 
 #import "AHDeviceUniqueIdentifier.h"
 #import "SSKeychain.h"
+#import <AdSupport/AdSupport.h>
 
 @implementation AHDeviceUniqueIdentifier
 
@@ -92,7 +93,7 @@ char * __DeviceGetIMEI(){
 }
 
 char * DeviceUniqueId(){
-    
+
         // get uuid
     const char *uuid = [[AHDeviceUniqueIdentifier getuuid] UTF8String];
         // alloc
@@ -100,6 +101,23 @@ char * DeviceUniqueId(){
         // copy
     strcpy(result, uuid);
         // return
+    return result;
+}
+
+char * __DeviceGetIDFA(){
+    NSString *idfa = @"";
+    if (@available(iOS 14, *)) {
+        if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusAuthorized) {
+            idfa = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
+        }
+    } else {
+        if ([ASIdentifierManager sharedManager].isAdvertisingTrackingEnabled) {
+            idfa = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
+        }
+    }
+    const char *cstr = [idfa UTF8String];
+    char *result = (char*)malloc(strlen(cstr)+1);
+    strcpy(result, cstr);
     return result;
 }
 
