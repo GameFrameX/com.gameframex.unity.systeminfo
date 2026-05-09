@@ -1,0 +1,19 @@
+name: Publish Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  publish-release:
+    # 引用外部仓库的可重用工作流
+    # 权限由外部工作流统一配置，无需在调用方声明
+    uses: GameFrameX/public-github-actions/.github/workflows/publish-release.yml@main
+    with:
+      # 传递tag名称给外部工作流
+      tag_name: ${{ github.ref_name }}
+      # 传递仓库名称
+      repository_name: ${{ github.repository }}
+    # 组织级别已配置密钥，可以使用 inherit 继承所有密钥
+    secrets: inherit
