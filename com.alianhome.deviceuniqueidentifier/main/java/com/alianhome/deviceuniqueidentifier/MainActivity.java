@@ -16,6 +16,10 @@ import com.unity3d.player.*;
 
 public class MainActivity extends UnityPlayerActivity {
 
+	public static String DeviceGetOAID() {
+		return OAIDHelper.getOAID(UnityPlayer.currentActivity.getApplicationContext());
+	}
+
 	@SuppressLint("HardwareIds")
 	public static String DeviceGetIMEI() {
 		TelephonyManager TelephonyMgr = (TelephonyManager) UnityPlayer.currentActivity
