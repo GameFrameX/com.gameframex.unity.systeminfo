@@ -20,7 +20,16 @@
 
 </div>
 
-A Unity3D plugin for retrieving device unique identifiers on Android and iOS platforms.
+A lightweight Unity3D plugin for retrieving device unique identifiers across Android and iOS platforms. It provides a unified C# API to access OAID, IDFA, IMEI, and a stable hardware fingerprint — with zero native dependencies on Android.
+
+### Highlights
+
+- **Pure C# on Android** — Uses `AndroidJavaClass` / `AndroidJavaObject` (JNI) to call system APIs and vendor SDKs directly. No Java code, no JAR files, no Gradle configuration needed.
+- **Cross-platform** — Works seamlessly on Android, iOS, and the Unity Editor. Unsupported APIs gracefully fall back to `SystemInfo.deviceUniqueIdentifier`.
+- **Vendor-wide OAID** — Supports MSA SDK, Huawei, Xiaomi, OPPO, vivo, and Samsung OAID retrieval on Android via reflection.
+- **iOS IDFA & SSKeychain** — Retrieves IDFA via `ASIdentifierManager` with ATT support; persists device ID in the Keychain so it survives app reinstalls.
+- **Zero mandatory permissions** — No permissions required. Optional permissions can be declared to improve identifier uniqueness.
+- **Built-in caching** — All results are cached in `PlayerPrefs` after the first call, avoiding redundant system queries.
 
 ## Features
 

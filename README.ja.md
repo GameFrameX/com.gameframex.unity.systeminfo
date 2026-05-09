@@ -20,7 +20,16 @@
 
 </div>
 
-Unity3D で Android および iOS プラットフォームのデバイス一意識別子を取得するプラグイン。
+軽量 Unity3D デバイス一意識別子取得プラグイン。Android と iOS プラットフォームに対応し、OAID、IDFA、IMEI、安定したハードウェアフィンガープリントにアクセスする統一 C# API を提供します。Android 側はネイティブ依存なし。
+
+### 特徴
+
+- **Android 純粋 C# 実装** — `AndroidJavaClass` / `AndroidJavaObject`（JNI）を使用してシステム API とベンダー SDK を直接呼び出し。Java コード、JAR ファイル、Gradle 設定は不要。
+- **クロスプラットフォーム** — Android、iOS、Unity Editor を統一サポート。未対応の API は自動的に `SystemInfo.deviceUniqueIdentifier` にフォールバック。
+- **マルチベンダー OAID** — リフレクション経由で MSA SDK、Huawei、Xiaomi、OPPO、vivo、Samsung の OAID 取得をサポート。
+- **iOS IDFA と SSKeychain** — `ASIdentifierManager` 経由で IDFA を取得し ATT 認証をサポート。デバイス ID を Keychain に永続化し、アプリ再インストール後も維持。
+- **権限不要** — 権限なしで動作。オプションの権限を宣言することで識別子の一意性を向上可能。
+- **内蔵キャッシュ** — すべての API は初回呼び出し後に `PlayerPrefs` で結果をキャッシュし、重複するシステムクエリを回避。
 
 ## 機能
 

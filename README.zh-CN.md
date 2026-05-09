@@ -20,7 +20,16 @@
 
 </div>
 
-用于在 Unity3D 中获取 Android 和 iOS 平台设备唯一标识符的插件。
+轻量级 Unity3D 设备唯一标识符获取插件，支持 Android 和 iOS 平台。提供统一的 C# API 访问 OAID、IDFA、IMEI 和稳定的硬件指纹，Android 端零原生依赖。
+
+### 核心特性
+
+- **Android 纯 C# 实现** — 通过 `AndroidJavaClass` / `AndroidJavaObject`（JNI）直接调用系统 API 和厂商 SDK，无需 Java 代码、JAR 文件或 Gradle 配置。
+- **跨平台** — Android、iOS、Unity Editor 统一支持。不支持的平台 API 会自动降级为 `SystemInfo.deviceUniqueIdentifier`。
+- **多厂商 OAID** — 通过反射支持 MSA SDK、华为、小米、OPPO、vivo、三星等主流厂商的 OAID 获取。
+- **iOS IDFA 与 SSKeychain** — 通过 `ASIdentifierManager` 获取 IDFA 并支持 ATT 授权；设备 ID 持久化到 Keychain，应用重装后依然有效。
+- **零强制权限** — 无需任何权限即可运行。声明可选权限可提升标识符唯一性。
+- **内置缓存** — 所有 API 首次调用后通过 `PlayerPrefs` 缓存结果，避免重复查询系统接口。
 
 ## 功能
 

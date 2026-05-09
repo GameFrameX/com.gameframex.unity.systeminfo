@@ -20,7 +20,16 @@
 
 </div>
 
-Unity3D에서 Android 및 iOS 플랫폼의 기기 고유 식별자를 가져오는 플러그인입니다.
+경량 Unity3D 기기 고유 식별자 플러그인. Android 및 iOS 플랫폼에서 OAID, IDFA, IMEI 및 안정적인 하드웨어 핑거프린트에 접근하는 통합 C# API를 제공합니다. Android 측은 네이티브 종속성이 없습니다.
+
+### 특징
+
+- **Android 순수 C# 구현** — `AndroidJavaClass` / `AndroidJavaObject`(JNI)를 사용하여 시스템 API와 벤더 SDK를 직접 호출합니다. Java 코드, JAR 파일, Gradle 설정이 필요하지 않습니다.
+- **크로스 플랫폼** — Android, iOS, Unity Editor를 통합 지원합니다. 미지원 플랫폼 API는 자동으로 `SystemInfo.deviceUniqueIdentifier`로 폴백됩니다.
+- **멀티 벤더 OAID** — 리플렉션을 통해 MSA SDK, Huawei, Xiaomi, OPPO, vivo, Samsung의 OAID 가져오기를 지원합니다.
+- **iOS IDFA 및 SSKeychain** — `ASIdentifierManager`를 통해 IDFA를 가져오고 ATT 인증을 지원합니다. 기기 ID를 Keychain에 영구 저장하여 앱 재설치 후에도 유지됩니다.
+- **권한 불필요** — 권한 없이 동작합니다. 선택적 권한을 선언하면 식별자의 고유성을 향상할 수 있습니다.
+- **내장 캐시** — 모든 API는 첫 번째 호출 후 `PlayerPrefs`에 결과를 캐시하여 중복 시스템 쿼리를 방지합니다.
 
 ## 기능
 
