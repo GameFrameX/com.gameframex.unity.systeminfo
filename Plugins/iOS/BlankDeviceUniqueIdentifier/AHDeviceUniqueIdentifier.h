@@ -1,9 +1,9 @@
 //
-//  AHDeviceUniqueIdentifier.h
-//  keychain
+//  AHDeviceUniqueIdentifier.mm
 //
-//  Created by AlianHome on 16/8/16.
-//  Copyright © 2016年 AlianHome. All rights reserved.
+//  Created by GameframeX(AlianBlank) on 16/8/16.
+//  https://github.com/gameframex
+//  https://github.com/alianblank
 //
 
 #import <Foundation/Foundation.h>
@@ -14,6 +14,7 @@
 extern "C" {
 #endif
     char * DeviceUniqueId();
+    char * __DeviceGetIMEI();
 #ifdef __cplusplus
 }
 #endif

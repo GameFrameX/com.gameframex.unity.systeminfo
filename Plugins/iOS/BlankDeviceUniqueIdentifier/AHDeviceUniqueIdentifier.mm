@@ -1,9 +1,9 @@
 //
-//  AHDeviceUniqueIdentifier.m
-//  keychain
+//  AHDeviceUniqueIdentifier.mm
 //
-//  Created by AlianHome on 16/8/16.
-//  Copyright © 2016年 AlianHome. All rights reserved.
+//  Created by GameframeX(AlianBlank) on 16/8/16.
+//  https://github.com/gameframex
+//  https://github.com/alianblank
 //
 
 #import "AHDeviceUniqueIdentifier.h"
@@ -47,11 +47,49 @@
         return uuid;
     }else{
         return value;
-    }
-    
+    }    
 }
+    
++ (NSString *) deviceGetIMEI
+    {
+        //获取设备唯一ID
+        NSString *const DEVICE_ID_KEY = @"device_id";
+       
+        NSString *bundleID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+        
+        NSString *deviceIdKey = [NSString stringWithFormat:@"%@_%@",bundleID,DEVICE_ID_KEY];
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString * currentDeviceUUIDStr = [userDefaults objectForKey:deviceIdKey];
+       
+        if(currentDeviceUUIDStr == nil || [currentDeviceUUIDStr isEqualToString:@""])
+        {
+           
+            NSUUID * currentDeviceUUID = [UIDevice currentDevice].identifierForVendor;
+            currentDeviceUUIDStr = currentDeviceUUID.UUIDString;
+            currentDeviceUUIDStr = [currentDeviceUUIDStr stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            currentDeviceUUIDStr = [currentDeviceUUIDStr lowercaseString];
+            
+            [userDefaults setObject:currentDeviceUUIDStr forKey:deviceIdKey];
+        }
+        
+        [userDefaults synchronize];
+        
+        return currentDeviceUUIDStr;
+    }
 
 
+char * __DeviceGetIMEI(){
+    
+        // get uuid
+    const char *uuid = [[AHDeviceUniqueIdentifier deviceGetIMEI] UTF8String];
+        // alloc
+    char *result = (char*)malloc(strlen(uuid)+1);
+        // copy
+    strcpy(result, uuid);
+        // return
+    return result;
+}
 
 char * DeviceUniqueId(){
     
