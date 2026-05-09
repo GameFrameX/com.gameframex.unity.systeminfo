@@ -17,6 +17,28 @@ import com.unity3d.player.*;
 public class MainActivity extends UnityPlayerActivity {
 
 	@SuppressLint("HardwareIds")
+	public static String DeviceGetIMEI() {
+		TelephonyManager TelephonyMgr = (TelephonyManager) UnityPlayer.currentActivity
+				.getSystemService(TELEPHONY_SERVICE);
+		String imei = "";
+		if (TelephonyMgr != null) {
+			try {
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+					imei = TelephonyMgr.getImei();
+				} else {
+					imei = TelephonyMgr.getDeviceId();
+				}
+			} catch (Exception e) {
+				Log.e("Unity", "READ_PHONE_STATE permission failed");
+			}
+		}
+		if (imei == null) {
+			imei = "";
+		}
+		return imei;
+	}
+
+	@SuppressLint("HardwareIds")
 	public static String DeviceUniqueIdentifier() {
 
 		// 1 compute IMEI
