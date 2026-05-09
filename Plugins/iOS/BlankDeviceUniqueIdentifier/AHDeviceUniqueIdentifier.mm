@@ -81,7 +81,7 @@
     }
 
 
-char * __DeviceGetIMEI(){
+char * gameframex_device_get_imei(){
     
         // get uuid
     const char *uuid = [[AHDeviceUniqueIdentifier deviceGetIMEI] UTF8String];
@@ -93,7 +93,7 @@ char * __DeviceGetIMEI(){
     return result;
 }
 
-char * DeviceUniqueId(){
+char * gameframex_device_unique_id(){
 
         // get uuid
     const char *uuid = [[AHDeviceUniqueIdentifier getuuid] UTF8String];
@@ -105,7 +105,7 @@ char * DeviceUniqueId(){
     return result;
 }
 
-char * __DeviceGetIDFA(){
+char * gameframex_device_get_idfa(){
     NSString *idfa = @"";
     if (@available(iOS 14, *)) {
         if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusAuthorized) {

@@ -13,9 +13,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-    char * DeviceUniqueId();
-    char * __DeviceGetIMEI();
-    char * __DeviceGetIDFA();
+    char * gameframex_device_unique_id();
+    char * gameframex_device_get_imei();
+    char * gameframex_device_get_idfa();
 #ifdef __cplusplus
 }
 #endif

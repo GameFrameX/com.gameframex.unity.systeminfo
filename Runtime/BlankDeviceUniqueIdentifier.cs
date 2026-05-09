@@ -43,11 +43,11 @@ namespace BlankSystemInfo.Runtime
     {
 #if UNITY_IOS || UNITY_IPHONE
         [DllImport("__Internal")]
-        private static extern string __DeviceGetIMEI();
+        private static extern string gameframex_device_get_imei();
         [DllImport("__Internal")]
-        private static extern string __DeviceGetIDFA();
+        private static extern string gameframex_device_get_idfa();
         [DllImport("__Internal")]
-        private static extern string DeviceUniqueId();
+        private static extern string gameframex_device_unique_id();
 #endif
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace BlankSystemInfo.Runtime
                 }
 
 #if UNITY_IOS || UNITY_IPHONE
-                string sid = __DeviceGetIDFA();
+                string sid = gameframex_device_get_idfa();
 #else
                 string sid = SystemInfo.deviceUniqueIdentifier;
 #endif
@@ -112,7 +112,7 @@ namespace BlankSystemInfo.Runtime
                 }
 
 #if UNITY_IOS || UNITY_IPHONE
-                string sid = __DeviceGetIMEI();
+                string sid = gameframex_device_get_imei();
 #elif UNITY_ANDROID
                 string sid = SafeGetImei();
 #else
@@ -138,7 +138,7 @@ namespace BlankSystemInfo.Runtime
                 }
 
 #if UNITY_IOS || UNITY_IPHONE
-                string sid = DeviceUniqueId();
+                string sid = gameframex_device_unique_id();
 #elif UNITY_ANDROID
                 string sid = ComputeDeviceUniqueId();
 #else
