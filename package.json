@@ -1,0 +1,31 @@
+{
+  "name": "com.gameframex.unity.systeminfo",
+  "displayName": "Game Frame X System Info",
+  "category": "GameFrameX",
+  "description": "系统信息组件，提供设备信息、系统信息等",
+  "version": "1.0.0",
+  "unity": "2019.4",
+  "keywords": [
+    "GameFrameX"
+  ],
+  "repository": {
+    "name": "com.gameframex.unity.systeminfo",
+    "url": "git+https://github.com/gameframex/com.gameframex.unity.systeminfo.git",
+    "type": "git"
+  },
+  "author": {
+    "name": "Blank",
+    "email": "alianblank@outlook.com",
+    "url": "https://gameframex.doc.alianblank.com"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "semantic-release": "^24.2.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.cnb.cool/GameFrameX/npm/-/packages/"
+  }
+}
