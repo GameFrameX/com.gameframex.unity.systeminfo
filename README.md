@@ -6,18 +6,20 @@
 
 | API | 说明 | 返回值 |
 |-----|------|--------|
+| `DeviceGetOaid` | 获取设备 OAID（Android 独有） | OAID 原始值（去 `-`，最长 32 位） |
+| `DeviceGetIdfa` | 获取设备 IDFA（iOS 独有） | IDFA 原始值（去 `-`，最长 32 位） |
 | `DeviceGetImei` | 获取设备 IMEI | IMEI 原始值（去 `-`，最长 32 位） |
 | `DeviceUniqueIdentifier` | 获取设备唯一机器码 | MD5 哈希值（32 位十六进制字符串） |
 
-两个 API 均通过 `PlayerPrefs` 缓存结果，首次获取后不再重复调用系统接口。
+所有 API 均通过 `PlayerPrefs` 缓存结果，首次获取后不再重复调用系统接口。
 
 ## 平台实现
 
-| 平台 | `DeviceGetImei` | `DeviceUniqueIdentifier` |
-|------|-----------------|--------------------------|
-| Android | Java `getImei()` / `getDeviceId()` | IMEI + 硬件信息 + Android ID + WLAN MAC + BT MAC 的 MD5 |
-| iOS | native `__DeviceGetIMEI()` (SSKeychain) | native `DeviceUniqueId()` (SSKeychain) |
-| Editor / 其他 | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` |
+| 平台 | `DeviceGetOaid` | `DeviceGetIdfa` | `DeviceGetImei` | `DeviceUniqueIdentifier` |
+|------|-----------------|-----------------|-----------------|--------------------------|
+| Android | 反射获取（MSA / 华为 / 小米 / OPPO / vivo / 三星） | `SystemInfo.deviceUniqueIdentifier`（降级） | Java `getImei()` / `getDeviceId()` | IMEI + 硬件信息 + Android ID + WLAN MAC + BT MAC 的 MD5 |
+| iOS | `SystemInfo.deviceUniqueIdentifier`（降级） | `ASIdentifierManager.advertisingIdentifier` | native `__DeviceGetIMEI()` (IDFV) | native `DeviceUniqueId()` (SSKeychain) |
+| Editor / 其他 | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` |
 
 ## 权限（可选）
 
@@ -42,12 +44,42 @@
 ```csharp
 using BlankSystemInfo.Runtime;
 
+// 获取设备 OAID（Android 独有，iOS/Editor 降级为 SystemInfo.deviceUniqueIdentifier）
+string oaid = BlankDeviceUniqueIdentifier.DeviceGetOaid;
+
+// 获取设备 IDFA（iOS 独有，Android/Editor 降级为 SystemInfo.deviceUniqueIdentifier）
+string idfa = BlankDeviceUniqueIdentifier.DeviceGetIdfa;
+
 // 获取设备 IMEI
 string imei = BlankDeviceUniqueIdentifier.DeviceGetImei;
 
 // 获取设备唯一标识符
 string deviceId = BlankDeviceUniqueIdentifier.DeviceUniqueIdentifier;
 ```
+
+### iOS IDFA 注意事项
+
+IDFA 需要用户授权 ATT（App Tracking Transparency）。使用前需在 `Info.plist` 中添加：
+
+```xml
+<key>NSUserTrackingUsageDescription</key>
+<string>您的广告标识符将用于提供更好的服务</string>
+```
+
+并在调用 `DeviceGetIdfa` 前请求授权：
+
+```csharp
+#if UNITY_IOS || UNITY_IPHONE
+// iOS 14+ 需要先请求 ATT 授权
+if (UnityEngine.iOS.Device.systemVersion.CompareTo("14") >= 0)
+{
+    UnityEngine.iOS.Device.RequestUserAuthorization(UnityEngine.iOS.UserTracking.Authorization);
+}
+#endif
+string idfa = BlankDeviceUniqueIdentifier.DeviceGetIdfa;
+```
+
+未授权时 `DeviceGetIdfa` 返回空串，不会崩溃。
 
 ## 目录结构
 

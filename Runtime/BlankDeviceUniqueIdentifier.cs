@@ -45,10 +45,74 @@ namespace BlankSystemInfo.Runtime
          *
          */
 
+        /// <summary>
+        /// 获取设备OAID（仅Android）
+        /// </summary>
+        /// <returns></returns>
+        public static string DeviceGetOaid
+        {
+            get
+            {
+                var id = UnityEngine.PlayerPrefs.GetString("DeviceUniqueIdentifierOAID");
+                if (!string.IsNullOrEmpty(id) && id != "null" && id.Length >= 4)
+                {
+                    return id;
+                }
+
+#if UNITY_ANDROID
+                UnityEngine.AndroidJavaObject androidJavaObject = new UnityEngine.AndroidJavaObject("com.alianhome.deviceuniqueidentifier.MainActivity");
+                var sid = androidJavaObject.CallStatic<string>("DeviceGetOAID");
+#else
+                var sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
+#endif
+                sid = sid.Replace("-", string.Empty);
+                if (sid.Length > 32)
+                {
+                    sid = sid.Substring(0, 32);
+                }
+                UnityEngine.PlayerPrefs.SetString("DeviceUniqueIdentifierOAID", sid);
+                return sid;
+            }
+        }
+
 #if UNITY_IOS || UNITY_IPHONE
         [DllImport("__Internal")]
         private static extern string __DeviceGetIMEI();
 #endif
+
+#if UNITY_IOS || UNITY_IPHONE
+        [DllImport("__Internal")]
+        private static extern string __DeviceGetIDFA();
+#endif
+
+        /// <summary>
+        /// 获取设备IDFA（仅iOS，Android/Editor降级为SystemInfo.deviceUniqueIdentifier）
+        /// </summary>
+        /// <returns></returns>
+        public static string DeviceGetIdfa
+        {
+            get
+            {
+                var id = UnityEngine.PlayerPrefs.GetString("DeviceUniqueIdentifierIDFA");
+                if (!string.IsNullOrEmpty(id) && id != "null" && id.Length >= 4)
+                {
+                    return id;
+                }
+
+#if UNITY_IOS || UNITY_IPHONE
+                var sid = __DeviceGetIDFA();
+#else
+                var sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
+#endif
+                sid = sid.Replace("-", string.Empty);
+                if (sid.Length > 32)
+                {
+                    sid = sid.Substring(0, 32);
+                }
+                UnityEngine.PlayerPrefs.SetString("DeviceUniqueIdentifierIDFA", sid);
+                return sid;
+            }
+        }
 
         /// <summary>
         /// 获取设备IMEI
