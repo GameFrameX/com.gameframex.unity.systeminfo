@@ -84,7 +84,7 @@ This plugin **does not require any permissions**. It gracefully degrades without
 ## Usage Examples
 
 ```csharp
-using BlankSystemInfo.Runtime;
+using GameFrameX.SystemInfo.Runtime;
 
 // Get device OAID (Android only, falls back to SystemInfo.deviceUniqueIdentifier on iOS/Editor)
 string oaid = BlankDeviceUniqueIdentifier.DeviceGetOaid;

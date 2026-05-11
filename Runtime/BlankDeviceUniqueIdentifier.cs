@@ -34,7 +34,7 @@ using UnityEngine;
 using System.Runtime.InteropServices;
 #endif
 
-namespace BlankSystemInfo.Runtime
+namespace GameFrameX.SystemInfo.Runtime
 {
     /// <summary>
     /// 获取 Android 和 iOS 的设备唯一标识符（纯 C# 实现，无需 Java/JAR）。
@@ -48,8 +48,10 @@ namespace BlankSystemInfo.Runtime
         // iOS 原生函数导入（通过 __Internal 链接） / iOS native function imports (linked via __Internal)
         [DllImport("__Internal")]
         private static extern string gameframex_device_get_imei();
+
         [DllImport("__Internal")]
         private static extern string gameframex_device_get_idfa();
+
         [DllImport("__Internal")]
         private static extern string gameframex_device_unique_id();
 #endif
@@ -74,7 +76,7 @@ namespace BlankSystemInfo.Runtime
 #if UNITY_ANDROID
                 string sid = SafeGetOaid();
 #else
-                string sid = SystemInfo.deviceUniqueIdentifier;
+                string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
                 PlayerPrefs.SetString("DeviceUniqueIdentifierOAID", sid);
@@ -102,7 +104,7 @@ namespace BlankSystemInfo.Runtime
 #if UNITY_IOS || UNITY_IPHONE
                 string sid = gameframex_device_get_idfa();
 #else
-                string sid = SystemInfo.deviceUniqueIdentifier;
+                string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
                 PlayerPrefs.SetString("DeviceUniqueIdentifierIDFA", sid);
@@ -132,7 +134,7 @@ namespace BlankSystemInfo.Runtime
 #elif UNITY_ANDROID
                 string sid = SafeGetImei();
 #else
-                string sid = SystemInfo.deviceUniqueIdentifier;
+                string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
                 PlayerPrefs.SetString("DeviceUniqueIdentifierIMEI", sid);
@@ -162,7 +164,7 @@ namespace BlankSystemInfo.Runtime
 #elif UNITY_ANDROID
                 string sid = ComputeDeviceUniqueId();
 #else
-                string sid = SystemInfo.deviceUniqueIdentifier;
+                string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
                 PlayerPrefs.SetString("DeviceUniqueIdentifierID", sid);
@@ -203,7 +205,6 @@ namespace BlankSystemInfo.Runtime
         //  Android JNI helpers — call system APIs directly via AndroidJavaClass/AndroidJavaObject
         // =====================================================================================
 #if UNITY_ANDROID
-
         /// <summary>
         /// 获取当前 Activity。
         /// </summary>

@@ -84,7 +84,7 @@
 ## 사용 예시
 
 ```csharp
-using BlankSystemInfo.Runtime;
+using GameFrameX.SystemInfo.Runtime;
 
 // 기기 OAID 가져오기 (Android 전용, iOS/Editor에서는 SystemInfo.deviceUniqueIdentifier로 폴백)
 string oaid = BlankDeviceUniqueIdentifier.DeviceGetOaid;

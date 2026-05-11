@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GameFrameX.SystemInfo.Runtime;
 
 public class BlankDeviceUniqueIdentifierExample : MonoBehaviour {
 

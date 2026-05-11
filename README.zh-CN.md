@@ -84,7 +84,7 @@
 ## 使用示例
 
 ```csharp
-using BlankSystemInfo.Runtime;
+using GameFrameX.SystemInfo.Runtime;
 
 // 获取设备 OAID（Android 独有，iOS/Editor 降级为 SystemInfo.deviceUniqueIdentifier）
 string oaid = BlankDeviceUniqueIdentifier.DeviceGetOaid;
