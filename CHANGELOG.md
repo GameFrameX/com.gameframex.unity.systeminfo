@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/1.0.0...1.1.0) (2026-05-11)
+
+
+### Features
+
+* **ios:** 添加 AppTrackingTransparency 框架导入 ([590f541](https://github.com/gameframex/com.gameframex.unity.systeminfo/commit/590f54125e5031b5c1153081ecd14c2fce870707))
+
 # 1.0.0 (2026-05-09)
 
 
