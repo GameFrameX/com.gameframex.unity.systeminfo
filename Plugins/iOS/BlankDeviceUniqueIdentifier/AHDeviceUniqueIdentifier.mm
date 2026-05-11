@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SSKeychain.h"
+#import "GameFrameXSSKeychain.h"
 #import <AdSupport/AdSupport.h>
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
 
@@ -35,17 +35,17 @@
 
 // 获取或创建 UUID，通过 Keychain 持久化存储 / Get or create UUID, persisted via Keychain
 + (NSString *)getuuid {
-    NSString *serviceName = @"com.alianhome.uuid";
+    NSString *serviceName = @"com.gameframex.blank.uuid";
     NSString *accountName = @"blank";
 
     // 读取已存储的值 / Read stored value
-    NSString *value = [SSKeychain passwordForService:serviceName account:accountName];
+    NSString *value = [GameFrameXSSKeychain passwordForService:serviceName account:accountName];
 
     if (value == nil) {
         // 生成新 UUID / Generate new UUID
         NSString *uuid = [self GenUUID];
         // 保存到 Keychain / Save to Keychain
-        [SSKeychain setPassword:uuid forService:serviceName account:accountName];
+        [GameFrameXSSKeychain setPassword:uuid forService:serviceName account:accountName];
         return uuid;
     } else {
         return value;

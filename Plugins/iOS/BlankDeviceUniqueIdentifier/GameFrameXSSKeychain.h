@@ -1,5 +1,5 @@
 //
-//  SSKeychain.h
+//  GameFrameXSSKeychain.h
 //  SSToolkit
 //
 //  Created by Sam Soffes on 5/19/10.
@@ -12,77 +12,77 @@
 /** Error codes that can be returned in NSError objects. */
 typedef enum {
 	/** No error. */
-	SSKeychainErrorNone = noErr,
+	GameFrameXSSKeychainErrorNone = noErr,
 	
 	/** Some of the arguments were invalid. */
-	SSKeychainErrorBadArguments = -1001,
+	GameFrameXSSKeychainErrorBadArguments = -1001,
 	
 	/** There was no password. */
-	SSKeychainErrorNoPassword = -1002,
+	GameFrameXSSKeychainErrorNoPassword = -1002,
 	
 	/** One or more parameters passed internally were not valid. */
-	SSKeychainErrorInvalidParameter = errSecParam,
+	GameFrameXSSKeychainErrorInvalidParameter = errSecParam,
 	
 	/** Failed to allocate memory. */
-	SSKeychainErrorFailedToAllocated = errSecAllocate,
+	GameFrameXSSKeychainErrorFailedToAllocated = errSecAllocate,
 	
 	/** No trust results are available. */
-	SSKeychainErrorNotAvailable = errSecNotAvailable,
+	GameFrameXSSKeychainErrorNotAvailable = errSecNotAvailable,
 	
 	/** Authorization/Authentication failed. */
-	SSKeychainErrorAuthorizationFailed = errSecAuthFailed,
+	GameFrameXSSKeychainErrorAuthorizationFailed = errSecAuthFailed,
 	
 	/** The item already exists. */
-	SSKeychainErrorDuplicatedItem = errSecDuplicateItem,
+	GameFrameXSSKeychainErrorDuplicatedItem = errSecDuplicateItem,
 	
 	/** The item cannot be found.*/
-	SSKeychainErrorNotFound = errSecItemNotFound,
+	GameFrameXSSKeychainErrorNotFound = errSecItemNotFound,
 	
 	/** Interaction with the Security Server is not allowed. */
-	SSKeychainErrorInteractionNotAllowed = errSecInteractionNotAllowed,
+	GameFrameXSSKeychainErrorInteractionNotAllowed = errSecInteractionNotAllowed,
 	
 	/** Unable to decode the provided data. */
-	SSKeychainErrorFailedToDecode = errSecDecode
-} SSKeychainErrorCode;
+	GameFrameXSSKeychainErrorFailedToDecode = errSecDecode
+} GameFrameXSSKeychainErrorCode;
 
-extern NSString *const kSSKeychainErrorDomain;
+extern NSString *const kGameFrameXSSKeychainErrorDomain;
 
 /** Account name. */
-extern NSString *const kSSKeychainAccountKey;
+extern NSString *const kGameFrameXSSKeychainAccountKey;
 
 /**
  Time the item was created.
  
  The value will be a string.
  */
-extern NSString *const kSSKeychainCreatedAtKey;
+extern NSString *const kGameFrameXSSKeychainCreatedAtKey;
 
 /** Item class. */
-extern NSString *const kSSKeychainClassKey;
+extern NSString *const kGameFrameXSSKeychainClassKey;
 
 /** Item description. */
-extern NSString *const kSSKeychainDescriptionKey;
+extern NSString *const kGameFrameXSSKeychainDescriptionKey;
 
 /** Item label. */
-extern NSString *const kSSKeychainLabelKey;
+extern NSString *const kGameFrameXSSKeychainLabelKey;
 
 /** Time the item was last modified.
  
  The value will be a string.
  */
-extern NSString *const kSSKeychainLastModifiedKey;
+extern NSString *const kGameFrameXSSKeychainLastModifiedKey;
 
 /** Where the item was created. */
-extern NSString *const kSSKeychainWhereKey;
+extern NSString *const kGameFrameXSSKeychainWhereKey;
 
 /**
  Simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system
  Keychain on Mac OS X and iOS.
  
  This was originally inspired by EMKeychain and SDKeychain (both of which are now gone). Thanks to the authors.
- SSKeychain has since switched to a simpler implementation that was abstracted from [SSToolkit](http://sstoolk.it).
+ GameFrameXSSKeychain has since switched to a simpler implementation that was abstracted from [SSToolkit](http://sstoolk.it).
  */
-@interface SSKeychain : NSObject
+@interface GameFrameXSSKeychain : NSObject
 
 ///-----------------------
 /// @name Getting Accounts
@@ -91,7 +91,7 @@ extern NSString *const kSSKeychainWhereKey;
 /**
  Returns an array containing the Keychain's accounts, or `nil` if the Keychain has no accounts.
  
- See the `NSString` constants declared in SSKeychain.h for a list of keys that can be used when accessing the
+ See the `NSString` constants declared in GameFrameXSSKeychain.h for a list of keys that can be used when accessing the
  dictionaries returned by this method.
  
  @return An array of dictionaries containing the Keychain's accounts, or `nil` if the Keychain doesn't have any
@@ -105,7 +105,7 @@ extern NSString *const kSSKeychainWhereKey;
  Returns an array containing the Keychain's accounts, or `nil` if the Keychain doesn't have any
  accounts.
  
- See the `NSString` constants declared in SSKeychain.h for a list of keys that can be used when accessing the
+ See the `NSString` constants declared in GameFrameXSSKeychain.h for a list of keys that can be used when accessing the
  dictionaries returned by this method.
  
  @param error If accessing the accounts fails, upon return contains an error that describes the problem.
@@ -121,7 +121,7 @@ extern NSString *const kSSKeychainWhereKey;
  Returns an array containing the Keychain's accounts for a given service, or `nil` if the Keychain doesn't have any
  accounts for the given service.
  
- See the `NSString` constants declared in SSKeychain.h for a list of keys that can be used when accessing the
+ See the `NSString` constants declared in GameFrameXSSKeychain.h for a list of keys that can be used when accessing the
  dictionaries returned by this method.
  
  @param serviceName The service for which to return the corresponding accounts.
