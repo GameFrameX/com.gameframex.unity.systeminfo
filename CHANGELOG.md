@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/2.0.0...3.0.0) (2026-05-11)
+
+
+* refactor(ios)!: prefix SSKeychain with GameFrameX ([fc34e68](https://github.com/gameframex/com.gameframex.unity.systeminfo/commit/fc34e6802c46bbbf0df517528f929ed789d1521c))
+
+
+### BREAKING CHANGES
+
+* Keychain service name changed from
+com.alianhome.uuid to com.gameframex.blank.uuid.
+Existing stored UUIDs will be lost and regenerated.
+
 # [2.0.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/1.1.0...2.0.0) (2026-05-11)
 
 
