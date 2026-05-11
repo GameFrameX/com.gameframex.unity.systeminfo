@@ -1,3 +1,17 @@
+# [2.0.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/1.1.0...2.0.0) (2026-05-11)
+
+
+* refactor(runtime)!: rename namespace to GameFrameX.SystemInfo.Runtime ([8889a39](https://github.com/gameframex/com.gameframex.unity.systeminfo/commit/8889a39b0d090828221bf8d31c92c12e7e2d1adb))
+
+
+### BREAKING CHANGES
+
+* namespace changed from BlankSystemInfo.Runtime
+to GameFrameX.SystemInfo.Runtime, assembly definition renamed
+from BlankSystemInfo.Runtime.asmdef to
+GameFrameX.SystemInfo.Runtime.asmdef.
+All using directives must be updated accordingly.
+
 # [1.1.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/1.0.0...1.1.0) (2026-05-11)
 
 
