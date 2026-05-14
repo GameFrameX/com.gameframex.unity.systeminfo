@@ -67,7 +67,7 @@ namespace GameFrameX.SystemInfo.Runtime
         {
             get
             {
-                string id = PlayerPrefs.GetString("DeviceUniqueIdentifierOAID");
+                string id = UnityEngine.PlayerPrefs.GetString("DeviceUniqueIdentifierOAID");
                 if (IsValid(id))
                 {
                     return id;
@@ -79,7 +79,7 @@ namespace GameFrameX.SystemInfo.Runtime
                 string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
-                PlayerPrefs.SetString("DeviceUniqueIdentifierOAID", sid);
+                UnityEngine.PlayerPrefs.SetString("DeviceUniqueIdentifierOAID", sid);
                 return sid;
             }
         }
@@ -95,7 +95,7 @@ namespace GameFrameX.SystemInfo.Runtime
         {
             get
             {
-                string id = PlayerPrefs.GetString("DeviceUniqueIdentifierIDFA");
+                string id = UnityEngine.PlayerPrefs.GetString("DeviceUniqueIdentifierIDFA");
                 if (IsValid(id))
                 {
                     return id;
@@ -107,7 +107,7 @@ namespace GameFrameX.SystemInfo.Runtime
                 string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
-                PlayerPrefs.SetString("DeviceUniqueIdentifierIDFA", sid);
+                UnityEngine.PlayerPrefs.SetString("DeviceUniqueIdentifierIDFA", sid);
                 return sid;
             }
         }
@@ -123,7 +123,7 @@ namespace GameFrameX.SystemInfo.Runtime
         {
             get
             {
-                string id = PlayerPrefs.GetString("DeviceUniqueIdentifierIMEI");
+                string id = UnityEngine.PlayerPrefs.GetString("DeviceUniqueIdentifierIMEI");
                 if (IsValid(id))
                 {
                     return id;
@@ -137,7 +137,7 @@ namespace GameFrameX.SystemInfo.Runtime
                 string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
-                PlayerPrefs.SetString("DeviceUniqueIdentifierIMEI", sid);
+                UnityEngine.PlayerPrefs.SetString("DeviceUniqueIdentifierIMEI", sid);
                 return sid;
             }
         }
@@ -153,7 +153,7 @@ namespace GameFrameX.SystemInfo.Runtime
         {
             get
             {
-                string id = PlayerPrefs.GetString("DeviceUniqueIdentifierID");
+                string id = UnityEngine.PlayerPrefs.GetString("DeviceUniqueIdentifierID");
                 if (IsValid(id))
                 {
                     return id;
@@ -167,7 +167,7 @@ namespace GameFrameX.SystemInfo.Runtime
                 string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
 #endif
                 sid = Normalize(sid);
-                PlayerPrefs.SetString("DeviceUniqueIdentifierID", sid);
+                UnityEngine.PlayerPrefs.SetString("DeviceUniqueIdentifierID", sid);
                 return sid;
             }
         }
