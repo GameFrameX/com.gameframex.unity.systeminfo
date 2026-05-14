@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/3.0.0...3.0.1) (2026-05-14)
+
+
+### Bug Fixes
+
+* **runtime:** qualify PlayerPrefs calls with UnityEngine prefix ([c4a51fc](https://github.com/gameframex/com.gameframex.unity.systeminfo/commit/c4a51fc44e436383a6be6132e062aa2dfe332035))
+
 # [3.0.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/2.0.0...3.0.0) (2026-05-11)
 
 
