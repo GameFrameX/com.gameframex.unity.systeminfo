@@ -4,7 +4,7 @@
 
 # BlankDeviceUniqueIdentifier
 
-[![Version](https://img.shields.io/github/v/release/AlianBlank/BlankDeviceUniqueIdentifier?label=version&color=green)](https://github.com/AlianBlank/BlankDeviceUniqueIdentifier/releases)
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.systeminfo?style=flat-square)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/releases)
 [![License](https://img.shields.io/badge/license-MIT+Apache%202.0-orange.svg)](LICENSE.md)
 [![Documentation](https://img.shields.io/badge/docs-gameframex-brightgreen.svg)](https://gameframex.doc.alianblank.com)
 
