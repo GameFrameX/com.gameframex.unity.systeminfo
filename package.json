@@ -3,7 +3,7 @@
   "displayName": "Game Frame X System Info",
   "category": "GameFrameX",
   "description": "设备唯一标识符插件 | A Unity3D plugin for retrieving device unique identifiers (OAID, IDFA, IMEI, hardware fingerprint) on Android and iOS — pure C# with JNI, no Java/JAR required.",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "unity": "2019.4",
   "keywords": [
     "GameFrameX"
