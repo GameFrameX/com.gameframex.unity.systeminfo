@@ -1,36 +1,24 @@
 <div align="center">
 
-![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_320.png)
+<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="Game Frame X Logo" width="160" />
 
 # BlankDeviceUniqueIdentifier
 
-[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.systeminfo?style=flat-square)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/releases)
-[![License](https://img.shields.io/badge/license-MIT+Apache%202.0-orange.svg)](LICENSE.md)
-[![Documentation](https://img.shields.io/badge/docs-gameframex-brightgreen.svg)](https://gameframex.doc.alianblank.com)
+[![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.systeminfo)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/blob/main/LICENSE.md)
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.systeminfo)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/releases)
+[![Documentation](https://img.shields.io/badge/Documentation-docs-blue)](https://gameframex.doc.alianblank.com)
 
-**獨立遊戲前後端一體化解決方案 · 獨立遊戲開發者的圓夢大使**
+獨立遊戲前後端一體化解決方案 · 獨立遊戲開發者的圓夢大使
 
-[📖 文檔](https://gameframex.doc.alianblank.com) • [🚀 快速開始](#使用範例)
+<br />
 
----
+[文檔](https://gameframex.doc.alianblank.com) · [快速開始](#quick-start) · [QQ群](https://qm.qq.com/q/5U9Fvebw)
 
-🌐 **語言**: [English](README.md) | [简体中文](README.zh-CN.md) | **繁體中文** | [日本語](README.ja.md) | [한국어](README.ko.md)
+<br />
 
----
+[English](README.md) | [简体中文](README.zh-CN.md) | **繁體中文** | [日本語](README.ja.md) | [한국어](README.ko.md)
 
 </div>
-
-輕量級 Unity3D 設備唯一標識符獲取插件，支援 Android 和 iOS 平台。提供統一的 C# API 存取 OAID、IDFA、IMEI 和穩定的硬體指紋，Android 端零原生依賴。
-
-### 核心特性
-
-- **Android 純 C# 實作** — 透過 `AndroidJavaClass` / `AndroidJavaObject`（JNI）直接呼叫系統 API 和廠商 SDK，無需 Java 程式碼、JAR 檔案或 Gradle 配置。
-- **跨平台** — Android、iOS、Unity Editor 統一支援。不支援的平台 API 會自動降級為 `SystemInfo.deviceUniqueIdentifier`。
-- **多廠商 OAID** — 透過反射支援 MSA SDK、華為、小米、OPPO、vivo、三星等主流廠商的 OAID 獲取。
-- **iOS IDFA 與 SSKeychain** — 透過 `ASIdentifierManager` 獲取 IDFA 並支援 ATT 授權；設備 ID 持久化到 Keychain，應用重裝後依然有效。
-- **零強制權限** — 無需任何權限即可運行。聲明可選權限可提升標識符唯一性。
-- **內建快取** — 所有 API 首次呼叫後透過 `PlayerPrefs` 快取結果，避免重複查詢系統介面。
-
 ## 功能
 
 | API | 說明 | 返回值 |

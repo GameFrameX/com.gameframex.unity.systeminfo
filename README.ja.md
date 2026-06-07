@@ -1,36 +1,24 @@
 <div align="center">
 
-![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_320.png)
+<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="Game Frame X Logo" width="160" />
 
 # BlankDeviceUniqueIdentifier
 
-[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.systeminfo?style=flat-square)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/releases)
-[![License](https://img.shields.io/badge/license-MIT+Apache%202.0-orange.svg)](LICENSE.md)
-[![Documentation](https://img.shields.io/badge/docs-gameframex-brightgreen.svg)](https://gameframex.doc.alianblank.com)
+[![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.systeminfo)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/blob/main/LICENSE.md)
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.systeminfo)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/releases)
+[![Documentation](https://img.shields.io/badge/Documentation-docs-blue)](https://gameframex.doc.alianblank.com)
 
-**インディゲーム開発者向けオールインワンソリューション · インディ開発者の夢を支援**
+インディゲーム開発者向けオールインワンソリューション · インディ開発者の夢を支援
 
-[📖 ドキュメント](https://gameframex.doc.alianblank.com) • [🚀 クイックスタート](#使用例)
+<br />
 
----
+[ドキュメント](https://gameframex.doc.alianblank.com) · [クイックスタート](#quick-start) · [QQグループ](https://qm.qq.com/q/5U9Fvebw)
 
-🌐 **言語**: [English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | **日本語** | [한국어](README.ko.md)
+<br />
 
----
+[English](README.md) | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | **日本語** | [한국어](README.ko.md)
 
 </div>
-
-軽量 Unity3D デバイス一意識別子取得プラグイン。Android と iOS プラットフォームに対応し、OAID、IDFA、IMEI、安定したハードウェアフィンガープリントにアクセスする統一 C# API を提供します。Android 側はネイティブ依存なし。
-
-### 特徴
-
-- **Android 純粋 C# 実装** — `AndroidJavaClass` / `AndroidJavaObject`（JNI）を使用してシステム API とベンダー SDK を直接呼び出し。Java コード、JAR ファイル、Gradle 設定は不要。
-- **クロスプラットフォーム** — Android、iOS、Unity Editor を統一サポート。未対応の API は自動的に `SystemInfo.deviceUniqueIdentifier` にフォールバック。
-- **マルチベンダー OAID** — リフレクション経由で MSA SDK、Huawei、Xiaomi、OPPO、vivo、Samsung の OAID 取得をサポート。
-- **iOS IDFA と SSKeychain** — `ASIdentifierManager` 経由で IDFA を取得し ATT 認証をサポート。デバイス ID を Keychain に永続化し、アプリ再インストール後も維持。
-- **権限不要** — 権限なしで動作。オプションの権限を宣言することで識別子の一意性を向上可能。
-- **内蔵キャッシュ** — すべての API は初回呼び出し後に `PlayerPrefs` で結果をキャッシュし、重複するシステムクエリを回避。
-
 ## 機能
 
 | API | 説明 | 戻り値 |

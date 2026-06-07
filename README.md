@@ -1,36 +1,24 @@
 <div align="center">
 
-![GameFrameX Logo](https://download.alianblank.com/gameframex/gameframex_logo_320.png)
+<img src="https://download.alianblank.com/gameframex/gameframex_logo_320.png" alt="Game Frame X Logo" width="160" />
 
 # BlankDeviceUniqueIdentifier
 
-[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.systeminfo?style=flat-square)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/releases)
-[![License](https://img.shields.io/badge/license-MIT+Apache%202.0-orange.svg)](LICENSE.md)
-[![Documentation](https://img.shields.io/badge/docs-gameframex-brightgreen.svg)](https://gameframex.doc.alianblank.com)
+[![License](https://img.shields.io/github/license/GameFrameX/com.gameframex.unity.systeminfo)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/blob/main/LICENSE.md)
+[![Version](https://img.shields.io/github/v/release/GameFrameX/com.gameframex.unity.systeminfo)](https://github.com/GameFrameX/com.gameframex.unity.systeminfo/releases)
+[![Documentation](https://img.shields.io/badge/Documentation-docs-blue)](https://gameframex.doc.alianblank.com)
 
-**All-in-One Solution for Indie Game Development · Empowering Indie Developers' Dreams**
+All-in-One Solution for Indie Game Development · Empowering Indie Developers' Dreams
 
-[📖 Documentation](https://gameframex.doc.alianblank.com) • [🚀 Quick Start](#usage-examples)
+<br />
 
----
+[Documentation](https://gameframex.doc.alianblank.com) · [Quick Start](#quick-start) · [QQ Group](https://qm.qq.com/q/5U9Fvebw)
 
-🌐 **Language**: **English** | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
+<br />
 
----
+**English** | [简体中文](README.zh-CN.md) | [繁體中文](README.zh-TW.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
 
 </div>
-
-A lightweight Unity3D plugin for retrieving device unique identifiers across Android and iOS platforms. It provides a unified C# API to access OAID, IDFA, IMEI, and a stable hardware fingerprint — with zero native dependencies on Android.
-
-### Highlights
-
-- **Pure C# on Android** — Uses `AndroidJavaClass` / `AndroidJavaObject` (JNI) to call system APIs and vendor SDKs directly. No Java code, no JAR files, no Gradle configuration needed.
-- **Cross-platform** — Works seamlessly on Android, iOS, and the Unity Editor. Unsupported APIs gracefully fall back to `SystemInfo.deviceUniqueIdentifier`.
-- **Vendor-wide OAID** — Supports MSA SDK, Huawei, Xiaomi, OPPO, vivo, and Samsung OAID retrieval on Android via reflection.
-- **iOS IDFA & SSKeychain** — Retrieves IDFA via `ASIdentifierManager` with ATT support; persists device ID in the Keychain so it survives app reinstalls.
-- **Zero mandatory permissions** — No permissions required. Optional permissions can be declared to improve identifier uniqueness.
-- **Built-in caching** — All results are cached in `PlayerPrefs` after the first call, avoiding redundant system queries.
-
 ## Features
 
 | API | Description | Return Value |
