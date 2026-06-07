@@ -32,6 +32,43 @@
 
 すべての API は `PlayerPrefs` を通じて結果をキャッシュし、初回取得後はシステムインターフェースを再呼び出ししません。
 
+
+
+## クイックスタート
+
+### インストール
+
+以下のいずれかの方法を選択してください：
+
+1. Unity プロジェクトの `Packages/manifest.json` を編集し、`scopedRegistries` セクションを追加してください：
+   ```json
+   {
+     "scopedRegistries": [
+       {
+         "name": "GameFrameX",
+         "url": "https://gameframex.upm.alianblank.uk",
+         "scopes": [
+           "com.gameframex"
+         ]
+       }
+     ],
+     "dependencies": {
+       "com.gameframex.unity.systeminfo": "3.0.1"
+     }
+   }
+   ```
+
+   `scopes` は、どのパッケージをこのレジストリから解決するかを制御します。`com.gameframex` で始まるパッケージのみがこのレジストリから取得されます。
+
+2. `manifest.json` の `dependencies` に直接追加：
+   ```json
+   {
+      "com.gameframex.unity.systeminfo": "https://github.com/gameframex/com.gameframex.unity.systeminfo.git"
+   }
+   ```
+3. Unity の **Package Manager** で **Git URL** を使用して追加：`https://github.com/gameframex/com.gameframex.unity.systeminfo.git`
+4. リポジトリを Unity プロジェクトの `Packages` ディレクトリにクローンしてください。自動的に読み込まれます.
+
 ## プラットフォーム実装
 
 | プラットフォーム | `DeviceGetOaid` | `DeviceGetIdfa` | `DeviceGetImei` | `DeviceUniqueIdentifier` |

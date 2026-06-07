@@ -32,6 +32,43 @@ All-in-One Solution for Indie Game Development · Empowering Indie Developers' D
 
 All APIs cache results via `PlayerPrefs`. System interfaces are not called again after the first retrieval.
 
+
+
+## Quick Start
+
+### Installation
+
+Choose one of the following methods:
+
+1. Edit your Unity project's `Packages/manifest.json` and add the `scopedRegistries` section:
+   ```json
+   {
+     "scopedRegistries": [
+       {
+         "name": "GameFrameX",
+         "url": "https://gameframex.upm.alianblank.uk",
+         "scopes": [
+           "com.gameframex"
+         ]
+       }
+     ],
+     "dependencies": {
+       "com.gameframex.unity.systeminfo": "3.0.1"
+     }
+   }
+   ```
+
+   `scopes` controls which packages are resolved through this registry. Only packages whose names start with `com.gameframex` will be fetched from it.
+
+2. Add to `manifest.json` dependencies:
+   ```json
+   {
+      "com.gameframex.unity.systeminfo": "https://github.com/gameframex/com.gameframex.unity.systeminfo.git"
+   }
+   ```
+3. Use **Package Manager** in Unity with **Git URL**: `https://github.com/gameframex/com.gameframex.unity.systeminfo.git`
+4. Clone the repository into your Unity project's `Packages` directory. It will be loaded automatically.
+
 ## Platform Implementation
 
 | Platform | `DeviceGetOaid` | `DeviceGetIdfa` | `DeviceGetImei` | `DeviceUniqueIdentifier` |
