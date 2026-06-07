@@ -12,7 +12,7 @@
 
 <br />
 
-[文档](https://gameframex.doc.alianblank.com) · [快速开始](#quick-start) · [QQ群](https://qm.qq.com/q/5U9Fvebw)
+[文档](https://gameframex.doc.alianblank.com) · [快速开始](#quick-start) · QQ群: 467608841 / 233840761
 
 <br />
 
