@@ -129,6 +129,25 @@ Runtime/
 
 > On Android, `AndroidJavaClass` / `AndroidJavaObject` is used to call system APIs and vendor SDKs directly — no Java code compilation or JAR files required.
 
+
+## Dependencies
+
+| Package | Description |
+|---------|-------------|
+| (无) | - |
+
+
+## Documentation & Resources
+
+- [Documentation](https://gameframex.doc.alianblank.com)
+
+## Community & Support
+
+- QQ Group: 467608841 / 233840761
+
+## Changelog
+
+See [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.systeminfo/releases) for changelog.
 ## License
 
 See [LICENSE.md](LICENSE.md) for license information.

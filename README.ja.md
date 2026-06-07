@@ -129,6 +129,25 @@ Runtime/
 
 > Android では `AndroidJavaClass` / `AndroidJavaObject` を使用してシステム API とベンダー SDK を直接呼び出します。Java コードのコンパイルや JAR ファイルは不要です。
 
+
+## 依存関係
+
+| パッケージ | 説明 |
+|----------|------|
+| (无) | - |
+
+
+## ドキュメントとリソース
+
+- [ドキュメント](https://gameframex.doc.alianblank.com)
+
+## コミュニティとサポート
+
+- QQグループ: 467608841 / 233840761
+
+## 変更履歴
+
+[Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.systeminfo/releases) で変更履歴を確認してください。
 ## ライセンス
 
 詳しくは [LICENSE.md](LICENSE.md) をご参照ください。

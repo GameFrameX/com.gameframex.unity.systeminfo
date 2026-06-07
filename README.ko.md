@@ -129,6 +129,25 @@ Runtime/
 
 > Android에서는 `AndroidJavaClass` / `AndroidJavaObject`를 사용하여 시스템 API와 벤더 SDK를 직접 호출합니다. Java 코드 컴파일이나 JAR 파일이 필요하지 않습니다.
 
+
+## 의존성
+
+| 패키지 | 설명 |
+|--------|------|
+| (无) | - |
+
+
+## 문서 및 자료
+
+- [문서](https://gameframex.doc.alianblank.com)
+
+## 커뮤니티 및 지원
+
+- QQ 그룹: 467608841 / 233840761
+
+## 변경 로그
+
+[Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.systeminfo/releases)에서 변경 로그를 확인하세요.
 ## 라이선스
 
 자세한 내용은 [LICENSE.md](LICENSE.md) 파일을 참조하세요.

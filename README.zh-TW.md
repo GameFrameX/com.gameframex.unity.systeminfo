@@ -129,6 +129,25 @@ Runtime/
 
 > Android 端透過 `AndroidJavaClass` / `AndroidJavaObject` 直接呼叫系統 API 和廠商 SDK，無需編譯和引入任何 Java 程式碼或 JAR 檔案。
 
+
+## 依賴
+
+| 套件 | 說明 |
+|------|------|
+| (无) | - |
+
+
+## 文檔與資源
+
+- [官方文檔](https://gameframex.doc.alianblank.com)
+
+## 社區與支援
+
+- QQ群: 467608841 / 233840761
+
+## 更新日誌
+
+查看 [Releases](https://github.com/GameFrameX/gameframex/com.gameframex.unity.systeminfo/releases) 了解更新日誌。
 ## 開源協議
 
 詳見 [LICENSE.md](LICENSE.md) 檔案。
