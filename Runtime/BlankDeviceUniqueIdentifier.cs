@@ -30,7 +30,7 @@
 using System.Text;
 using UnityEngine;
 
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_IOS || UNITY_IPHONE || (UNITY_WEBGL && !UNITY_EDITOR)
 using System.Runtime.InteropServices;
 #endif
 
@@ -56,6 +56,12 @@ namespace GameFrameX.SystemInfo.Runtime
         private static extern string gameframex_device_unique_id();
 #endif
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+        // WebGL 浏览器函数导入（通过 __Internal 链接） / WebGL browser function import (linked via __Internal)
+        [DllImport("__Internal")]
+        private static extern string gameframex_webgl_device_unique_id();
+#endif
+
         /// <summary>
         /// 获取设备 OAID（Android 独有，iOS/Editor 降级为 SystemInfo.deviceUniqueIdentifier）。
         /// </summary>
@@ -73,7 +79,9 @@ namespace GameFrameX.SystemInfo.Runtime
                     return id;
                 }
 
-#if UNITY_ANDROID
+#if UNITY_WEBGL && !UNITY_EDITOR
+                string sid = gameframex_webgl_device_unique_id();
+#elif UNITY_ANDROID
                 string sid = SafeGetOaid();
 #else
                 string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
@@ -101,7 +109,9 @@ namespace GameFrameX.SystemInfo.Runtime
                     return id;
                 }
 
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_WEBGL && !UNITY_EDITOR
+                string sid = gameframex_webgl_device_unique_id();
+#elif UNITY_IOS || UNITY_IPHONE
                 string sid = gameframex_device_get_idfa();
 #else
                 string sid = UnityEngine.SystemInfo.deviceUniqueIdentifier;
@@ -129,7 +139,9 @@ namespace GameFrameX.SystemInfo.Runtime
                     return id;
                 }
 
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_WEBGL && !UNITY_EDITOR
+                string sid = gameframex_webgl_device_unique_id();
+#elif UNITY_IOS || UNITY_IPHONE
                 string sid = gameframex_device_get_imei();
 #elif UNITY_ANDROID
                 string sid = SafeGetImei();
@@ -159,7 +171,9 @@ namespace GameFrameX.SystemInfo.Runtime
                     return id;
                 }
 
-#if UNITY_IOS || UNITY_IPHONE
+#if UNITY_WEBGL && !UNITY_EDITOR
+                string sid = gameframex_webgl_device_unique_id();
+#elif UNITY_IOS || UNITY_IPHONE
                 string sid = gameframex_device_unique_id();
 #elif UNITY_ANDROID
                 string sid = ComputeDeviceUniqueId();
