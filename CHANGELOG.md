@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/3.0.2...3.1.0) (2026-06-16)
+
+
+### Features
+
+* **runtime:** 添加 WebGL 平台设备唯一标识支持 ([7c908cc](https://github.com/gameframex/com.gameframex.unity.systeminfo/commit/7c908cc2886978068bcf968914939fa5e80c27bf))
+
 ## [3.0.2](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/3.0.1...3.0.2) (2026-06-07)
 
 
