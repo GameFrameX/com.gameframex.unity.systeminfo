@@ -112,7 +112,10 @@
 |------|-----------------|-----------------|-----------------|--------------------------|
 | Android | JNI 反射獲取（MSA / 華為 / 小米 / OPPO / vivo / 三星） | `SystemInfo.deviceUniqueIdentifier`（降級） | JNI 呼叫 `TelephonyManager` | IMEI + 硬體資訊 + Android ID + WLAN MAC + BT MAC 的 MD5 |
 | iOS | `SystemInfo.deviceUniqueIdentifier`（降級） | `ASIdentifierManager.advertisingIdentifier` | native `__DeviceGetIMEI()` (IDFV) | native `DeviceUniqueId()` (SSKeychain) |
+| WebGL | jslib：`localStorage` 持久化 UUID | jslib：`localStorage` 持久化 UUID | jslib：`localStorage` 持久化 UUID | jslib：`localStorage` 持久化 UUID |
 | Editor / 其他 | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` |
+
+> **WebGL 說明**：`SystemInfo.deviceUniqueIdentifier` 在瀏覽器情境中不穩定，因此 jslib 在首次呼叫時產生 UUID 並持久化到 `localStorage` 的 `GameFrameX.DeviceUniqueIdentifier` 鍵下，保證同一瀏覽器內穩定。
 
 ## 權限（可選）
 
@@ -197,6 +200,8 @@ Plugins/
       AHDeviceUniqueIdentifier.mm              # iOS native 實作
       SSKeychain.h                              # SSKeychain 鑰匙串工具
       SSKeychain.m
+  WebGL/
+    BlankDeviceUniqueIdentifier.jslib         # WebGL jslib 橋接（localStorage 持久化 UUID）
 Runtime/
   BlankDeviceUniqueIdentifier.cs               # C# 統一介面（Android 透過 JNI 直接呼叫系統 API，無需 Java/JAR）
 ```

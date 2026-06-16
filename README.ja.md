@@ -112,7 +112,10 @@
 |----------|-----------------|-----------------|-----------------|--------------------------|
 | Android | JNI リフレクション取得（MSA / Huawei / Xiaomi / OPPO / vivo / Samsung） | `SystemInfo.deviceUniqueIdentifier`（フォールバック） | JNI による `TelephonyManager` 呼び出し | IMEI + ハードウェア情報 + Android ID + WLAN MAC + BT MAC の MD5 |
 | iOS | `SystemInfo.deviceUniqueIdentifier`（フォールバック） | `ASIdentifierManager.advertisingIdentifier` | native `__DeviceGetIMEI()` (IDFV) | native `DeviceUniqueId()` (SSKeychain) |
+| WebGL | jslib：`localStorage` に永続化された UUID | jslib：`localStorage` に永続化された UUID | jslib：`localStorage` に永続化された UUID | jslib：`localStorage` に永続化された UUID |
 | Editor / その他 | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` |
+
+> **WebGL 補足**：`SystemInfo.deviceUniqueIdentifier` はブラウザコンテキストで不安定なため、jslib は初回呼び出し時に UUID を生成し、`localStorage` の `GameFrameX.DeviceUniqueIdentifier` キーに永続化することで、同じブラウザ内では安定します。
 
 ## 権限（オプション）
 
@@ -197,6 +200,8 @@ Plugins/
       AHDeviceUniqueIdentifier.mm              # iOS native 実装
       SSKeychain.h                              # SSKeychain キーチェーンユーティリティ
       SSKeychain.m
+  WebGL/
+    BlankDeviceUniqueIdentifier.jslib         # WebGL jslib ブリッジ（localStorage 永続化 UUID）
 Runtime/
   BlankDeviceUniqueIdentifier.cs               # C# 統一インターフェース（Android は JNI でシステム API を直接呼び出し、Java/JAR 不要）
 ```

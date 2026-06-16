@@ -112,7 +112,10 @@
 |----------|-----------------|-----------------|-----------------|--------------------------|
 | Android | JNI 리플렉션 가져오기 (MSA / Huawei / Xiaomi / OPPO / vivo / Samsung) | `SystemInfo.deviceUniqueIdentifier` (폴백) | JNI로 `TelephonyManager` 호출 | IMEI + 하드웨어 정보 + Android ID + WLAN MAC + BT MAC의 MD5 |
 | iOS | `SystemInfo.deviceUniqueIdentifier` (폴백) | `ASIdentifierManager.advertisingIdentifier` | native `__DeviceGetIMEI()` (IDFV) | native `DeviceUniqueId()` (SSKeychain) |
+| WebGL | jslib: `localStorage`에 영구 저장된 UUID | jslib: `localStorage`에 영구 저장된 UUID | jslib: `localStorage`에 영구 저장된 UUID | jslib: `localStorage`에 영구 저장된 UUID |
 | Editor / 기타 | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` |
+
+> **WebGL 참고**: `SystemInfo.deviceUniqueIdentifier`는 브라우저 컨텍스트에서 안정적이지 않으므로, jslib는 최초 호출 시 UUID를 생성하여 `localStorage`의 `GameFrameX.DeviceUniqueIdentifier` 키에 영구 저장함으로써 동일한 브라우저 내에서 안정성을 보장합니다.
 
 ## 권한 (선택 사항)
 
@@ -197,6 +200,8 @@ Plugins/
       AHDeviceUniqueIdentifier.mm              # iOS native 구현
       SSKeychain.h                              # SSKeychain 키체인 유틸리티
       SSKeychain.m
+  WebGL/
+    BlankDeviceUniqueIdentifier.jslib         # WebGL jslib 브리지 (localStorage 영구 UUID)
 Runtime/
   BlankDeviceUniqueIdentifier.cs               # C# 통합 인터페이스 (Android는 JNI로 시스템 API를 직접 호출, Java/JAR 불필요)
 ```

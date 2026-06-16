@@ -112,7 +112,10 @@ Choose one of the following methods:
 |----------|-----------------|-----------------|-----------------|--------------------------|
 | Android | JNI reflection (MSA / Huawei / Xiaomi / OPPO / vivo / Samsung) | `SystemInfo.deviceUniqueIdentifier` (fallback) | JNI call to `TelephonyManager` | MD5 of IMEI + hardware info + Android ID + WLAN MAC + BT MAC |
 | iOS | `SystemInfo.deviceUniqueIdentifier` (fallback) | `ASIdentifierManager.advertisingIdentifier` | native `__DeviceGetIMEI()` (IDFV) | native `DeviceUniqueId()` (SSKeychain) |
+| WebGL | jslib: UUID persisted in `localStorage` | jslib: UUID persisted in `localStorage` | jslib: UUID persisted in `localStorage` | jslib: UUID persisted in `localStorage` |
 | Editor / Other | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` | `SystemInfo.deviceUniqueIdentifier` |
+
+> **WebGL note**: `SystemInfo.deviceUniqueIdentifier` changes with the browser context, so the jslib generates a UUID on first call and persists it in `localStorage` under `GameFrameX.DeviceUniqueIdentifier` to ensure stability within the same browser.
 
 ## Permissions (Optional)
 
@@ -197,6 +200,8 @@ Plugins/
       AHDeviceUniqueIdentifier.mm              # iOS native implementation
       SSKeychain.h                              # SSKeychain keychain utility
       SSKeychain.m
+  WebGL/
+    BlankDeviceUniqueIdentifier.jslib         # WebGL jslib bridge (localStorage-persisted UUID)
 Runtime/
   BlankDeviceUniqueIdentifier.cs               # C# unified interface (Android uses JNI to call system APIs directly, no Java/JAR needed)
 ```
