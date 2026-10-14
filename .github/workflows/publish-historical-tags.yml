@@ -1,0 +1,11 @@
+name: Publish Historical Tags
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish-historical-tags:
+    uses: GameFrameX/public-github-actions/.github/workflows/publish-historical-tags.yml@main
+    with:
+      tags: ''
+    secrets: inherit
