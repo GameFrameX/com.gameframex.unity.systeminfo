@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/3.1.0...3.1.1) (2026-10-15)
+
+
+### Bug Fixes
+
+* **runtime:** 为设备标识属性添加 Preserve 特性 ([8c0e1f3](https://github.com/gameframex/com.gameframex.unity.systeminfo/commit/8c0e1f371d5beb510c1837c30f44e8fe08b3441b))
+
 # [3.1.0](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/3.0.2...3.1.0) (2026-06-16)
 
 
