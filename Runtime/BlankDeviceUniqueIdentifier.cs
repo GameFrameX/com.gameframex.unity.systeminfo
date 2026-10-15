@@ -69,6 +69,7 @@ namespace GameFrameX.SystemInfo.Runtime
         /// Get device OAID (Android only; iOS/Editor falls back to SystemInfo.deviceUniqueIdentifier).
         /// </remarks>
         /// <value>设备 OAID 标识符 / Device OAID identifier</value>
+        [UnityEngine.Scripting.Preserve]
         public static string DeviceGetOaid
         {
             get
@@ -99,6 +100,7 @@ namespace GameFrameX.SystemInfo.Runtime
         /// Get device IDFA (iOS only; Android/Editor falls back to SystemInfo.deviceUniqueIdentifier).
         /// </remarks>
         /// <value>设备 IDFA 标识符 / Device IDFA identifier</value>
+        [UnityEngine.Scripting.Preserve]
         public static string DeviceGetIdfa
         {
             get
@@ -129,6 +131,7 @@ namespace GameFrameX.SystemInfo.Runtime
         /// Get device IMEI.
         /// </remarks>
         /// <value>设备 IMEI 标识符 / Device IMEI identifier</value>
+        [UnityEngine.Scripting.Preserve]
         public static string DeviceGetImei
         {
             get
@@ -161,6 +164,7 @@ namespace GameFrameX.SystemInfo.Runtime
         /// Get device unique identifier (composite MD5 hash of multiple identifiers).
         /// </remarks>
         /// <value>设备唯一标识符 / Device unique identifier</value>
+        [UnityEngine.Scripting.Preserve]
         public static string DeviceUniqueIdentifier
         {
             get
