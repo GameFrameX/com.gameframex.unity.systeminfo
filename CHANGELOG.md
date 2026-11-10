@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/3.1.1...3.1.2) (2026-11-10)
+
+
+### Bug Fixes
+
+* **systeminfo:** 添加完整 link.xml 防代码裁剪保护 ([5070854](https://github.com/gameframex/com.gameframex.unity.systeminfo/commit/5070854e6e4b66a460fc519d9b28ccd4729ee7da))
+
 ## [3.1.1](https://github.com/gameframex/com.gameframex.unity.systeminfo/compare/3.1.0...3.1.1) (2026-10-15)
 
 
